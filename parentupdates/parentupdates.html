@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Updates</ion-title>
+  </ion-navbar>
+</ion-header>
+
+    <ion-content class="masters">
+        <ion-grid>
+            <ion-row>
+                <ion-col *ngFor="let petupdate of allPetUpdates | async">
+                    <ion-card class="card">
+                        <ion-card-header style="color:black">
+                                {{petupdate.NameDescription}}
+                        </ion-card-header>
+                        <ion-card-content style="color:black">
+                                Date: {{petupdate.UpdateDate}}
+                                <br>
+                                Feeding Status: {{petupdate.FeedingStatus}}
+                                <br>
+                                Walking Status: {{petupdate.WalkingStatus}}
+                                <br>
+                                Grooming Status: {{petupdate.GroomedStatus}}
+                        </ion-card-content>
+                    </ion-card>
+                    <br>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+        <ion-card >
+    <img src="https://firebasestorage.googleapis.com/v0/b/ionic-b9e87.appspot.com/o/picture1%2Fpic1?alt=media" alt="Pet Image" height="150" width="150">
+    <img src="https://firebasestorage.googleapis.com/v0/b/ionic-b9e87.appspot.com/o/picture2%2Fpic2?alt=media" alt="Pet Image" height="150" width="150">
+        </ion-card>
+</ion-content>
