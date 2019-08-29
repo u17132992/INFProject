@@ -1,0 +1,97 @@
+<div class="container">
+    <h3>Pets</h3>
+    <hr>
+    <!-- <form id="pets" #form="ngForm" (ngSubmit)="saveForm(form.value)" (ngSubmit)="f.pets.valid && updatePet()"> -->
+    <!-- <form id="pets" #form="ngForm"></form> (ngSubmit)="updatePet()"> -->
+    <!-- <div id="PetID" class="form-group row">
+        <label for="PetID" class="col-sm-2 col-form-label">
+            Pet ID
+        </label>
+        <div class="col-sm-10">
+            <input [(ngModel)]="currentpet.PetID" id="PetID" name="PetID" class="form-control"
+                placeholder="PetID">
+        </div>
+    </div> -->
+    <!-- <div id="PetAmount" class="form-group row">
+        <label for="PetAmount" class="col-sm-2 col-form-label">
+            Pet Type
+        </label>
+        <div class="col-sm-10">
+            <input [(ngModel)]="currentpet.PetAmount" id="PetAmount" name="PetAmount" class="form-control"
+                placeholder="PetAmount">
+        </div>
+    </div> -->
+    <div>
+        <div id="PetType" class="form-group row">
+            <label for="PetType" class="col-sm-2 col-form-label">
+                Pet Type:
+            </label>
+            <select ngModel="currentpet.TypeId" #TypeId="ngModel" name="TypeId" type="select" class="form-control" style="width: 100px">
+                <option placeholder="TypeId" *ngFor="let t of pettypes" ngRequired>
+                    {{t.PetTypeDescription}}
+                </option>
+            </select>
+            <div id="PetType" class="form-group row">
+                <label for="PetType" class="col-sm-2 col-form-label">
+                    Pet Type Description
+                </label>
+                <div class="col-sm-10">
+                    <input [(ngModel)]="currentpet.PetType" id="PetType" name="PetType" class="form-control"
+                        placeholder="PetType">
+                </div>
+            </div>
+            <div id="PetType" class="form-group row">
+                <label for="PetType" class="col-sm-2 col-form-label">
+                    Pet Name
+                </label>
+                <div class="col-sm-10">
+                    <input [(ngModel)]="currentpet.PetName" id="PetName" name="PetName" class="form-control"
+                        placeholder="PetName">
+                </div>
+            </div>
+            <div>
+                <p class="text-center"><a href="javascript:;" routerLink="/pet-parent">Cancel</a></p>
+                <!-- <button id="button" (click)="findPets()">
+            <img class="buttonimage" src="../../assets/search_48.png" />
+        </button> -->
+                &nbsp;
+                <button id="button" (click)="createPet()">
+                    <img class="buttonimage" src="../../assets/add_48.png" title="Add" />
+                </button>
+                &nbsp;
+                <button id="button" (click)="updatePet()">
+                    <img src="../../assets/pencil_48.png" class="buttonimage" title="Update" />
+                </button>
+            </div>
+        </div>
+
+        <table id="table">
+            <tr>
+                <th>ID</th>
+                <!-- <th>Type</th> -->
+                <th>Type Description</th>
+                <th>Name</th>
+                <th>&nbsp;</th>
+            </tr>
+
+            <tr *ngFor="let r of pets">
+                <td style="text-align: center">{{r.PetID}}</td>
+                <!-- <td style="text-align: center">
+                    <select ngModel="r.PetTypeId" #PetTypeId="ngModel" name="PetTypeId" type="select" class="form-control">
+                        <option placeholder="PetTypeId" *ngFor="let t of pettypes" disabled>
+                            {{t.PetTypeDescription}}
+                        </option>
+                    </select>
+                </td> -->
+                <td style="text-align: center">{{r.PetType}}</td>
+                <td style="text-align: center">{{r.PetName}}</td>
+                <td>
+                    <button id="button" (click)="selectPet(r.PetID)">
+                        <img class="buttonimage" src="../../assets/accepted_48.png" title="Select" />
+                    </button>
+                    <button id="button" (click)="deletePet(r.PetID)">
+                        <img src="../../assets/cancel_48.png" class="buttonimage" title="Delete" />
+                    </button>
+                </td>
+            </tr>
+        </table>

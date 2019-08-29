@@ -1,0 +1,44 @@
+[
+    {
+        "slug": "angular",
+        "title": "Category 1",
+        "image": "https://angular.io/assets/images/logos/angular/angular.svg",
+        "description": "Category 1 Description.",
+        "tags": [
+            {
+                "name": "C1/T1"
+            }
+        ]
+    },
+    {
+        "slug": "angular-cli",
+        "title": "Category 2",
+        "image": "https://angular.io/generated/images/marketing/concept-icons/cli.svg",
+        "description": "Category 2 Description.",
+        "tags": [
+            {
+                "name": "C2/T1"
+            },
+            {
+                "name": "C2/T2"
+            }
+        ]
+    },
+    {
+        "slug": "typescript",
+        "title": "Category 3",
+        "image": "https://s.gravatar.com/avatar/3e2b342616822f8eabc9dd393840db4a?size=496&default=retro",
+        "description": "Category 3 Description.",
+        "tags": [
+            {
+                "name": "C3/T1"
+            },
+            {
+                "name": "C3/T2"
+            },
+            {
+                "name": "C3/T3"
+            }
+        ]
+    }
+]
