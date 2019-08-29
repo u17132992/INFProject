@@ -1,0 +1,214 @@
+<h3>Request Pet Sitting</h3>
+
+<ng-container *ngIf="selectedPanel === 1">
+
+    <table id="tablepsopportunities">
+        <tr>
+            <th colspan="5"><b>My service requests</b></th>
+        </tr>
+        <tr>
+            <th>Period</th>
+            <th>Pets</th>
+            <th>Special Notes</th>
+ 
+        </tr>
+        <tr *ngFor="let r of servicerequests">
+            <td>
+                {{r.DateStart.substring(0,10)}}
+                &nbsp;to&nbsp;
+                {{r.DateEnd.substring(0,10)}}
+            </td>
+            <td>{{r.Pets}}</td>
+            <td>{{r.SpecialNote}}</td>
+       
+        </tr>
+    </table>
+    <br />
+    <div class="form-group" style="align-content: center">
+        <button id="b3" (click)="newServiceRequest()">
+         
+            New Service Request
+        </button>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="selectedPanel === 2">
+ 
+    <div *ngIf="currentservicerequest">
+        <form (ngSubmit)="f.form.valid && updateServiceRequest()" #f="ngForm" action="" method="post">
+            <div class="form-group">
+                <table>
+                  
+                    <tr>
+                        <td align="right">Start date:</td>
+                        <td align="left"><input [(ngModel)]="currentservicerequest.DateStart" type="date" id="startDate"
+                                name="startDate"></td>
+                    </tr>
+                    <tr>
+                        <td align="right">End date:</td>
+                        <td align="left"><input [(ngModel)]="currentservicerequest.DateEnd" type="date" id="startDate"
+                                name="endDate"></td>
+                    </tr>
+                    <tr>
+                        <td align="right">Pets:</td>
+                        <td><input [(ngModel)]="currentservicerequest.Pets" #Pets="ngModel" name="Pets" type="Pets"
+                                class="form-control" placeholder="Pets" required="required"></td>
+                    </tr>
+                  
+                    <tr>
+                        <td align="right">Special Notes:</td>
+                        <td><input [(ngModel)]="currentservicerequest.SpecialNote" #SpecialNote="ngModel"
+                                name="SpecialNote" type="SpecialNote" class="form-control" placeholder="SpecialNote">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">Request Type:</td>
+                        <td>
+                            <input [(ngModel)]="currentservicerequest.TypeID" type="radio" id="petsittingSO" value="1"
+                                name="ServiceType">Stay-overs<br>
+                            <input [(ngModel)]="currentservicerequest.TypeID" type="radio" id="petsittingMD" value="2"
+                                name="ServiceType">Morning daily visits<br>
+                            <input [(ngModel)]="currentservicerequest.TypeID" type="radio" id="petsittingAD" value="3"
+                                name="ServiceType">Afternoon daily visits<br>
+                            <input [(ngModel)]="currentservicerequest.TypeID" type="radio" id="petsittingTD" value="4"
+                                name="ServiceType">Twice-a-day visits<br>
+                            <input [(ngModel)]="currentservicerequest.TypeID" type="radio" id="petsittingCV" value="5"
+                                name="ServiceType">Combination visits<br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Location:</td>
+                        <td>
+                            <select [(ngModel)]="currentservicerequest.CityID" #CityID="ngModel" name="City"
+                                type="select" class="form-control">
+                                <option value="default">--Select City--</option>
+                                <option value="{{c.CityID}}" placeholder="City" *ngFor="let c of cities" ngRequired>
+                                    {{c.CityName}}</option>
+                            </select>
+
+                            <select [(ngModel)]="currentservicerequest.SuburbID" #SuburbID="ngModel" name="Suburb"
+                                type="select" class="form-control">
+                                <option value="default">--Select Suburb--</option>
+                                <option value="{{s.SuburbID}}" placeholder="Suburb" *ngFor="let s of suburbs"
+                                    ngRequired> {{s.SuburbName}} </option>
+                            </select>
+
+                        </td>
+                    </tr>
+                </table>
+                <br />
+                <button id="b3" (click)="updateServiceRequest()">
+                    Save Service Request
+                </button>
+            </div>
+        </form>
+    </div>
+
+</ng-container>
+
+<ng-container *ngIf="selectedPanel === 3">
+
+    <div>
+        <h3>Pet Service Instructions</h3>
+        <p>{{currentservicerequest.RequestID}} &nbsp; currentpsi.PetID = {{currentpsi.PetID}} </p>
+
+        <table id="table">
+            <tr>
+                <th>Pet</th>
+                <th>General</th>
+                <th>Instructions</th>
+
+            </tr>
+            <tr *ngFor="let psi of psilist">
+                <td>
+                    <ng-container *ngFor="let p of petlist">
+                        <div *ngIf="p.PetID === psi.PetID">{{ p.PetName }}</div>
+                    </ng-container>
+                </td>
+                <td style="text-align: left">
+                    {{psi.NameDescription}}
+                </td>
+                <td style="text-align: left">
+                    {{psi.FeedingInstructions}}
+                </td>
+             
+            </tr>
+        </table>
+        <br />
+        <button id="button" (click)="newPSI()">
+            New PSI
+        </button>
+        <br /><br />
+    </div>
+
+    <div>
+        <table>
+            <tr>
+                <td align="right">Pet:</td>
+                <td><select [(ngModel)]="currentpsi.PetID" #PetID="ngModel" name="Pet" type="select"
+                        class="form-control">
+                        <option value="default">--Select Pet--</option>
+                        <option value="{{p.PetID}}" placeholder="Pet" *ngFor="let p of petlist" ngRequired>
+                            {{p.PetName}}</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">General:</td>
+                <td><input [(ngModel)]="currentpsi.NameDescription" #NameDescription="ngModel" name="NameDescription"
+                        type="NameDescription" class="form-control" placeholder="NameDescription">
+                </td>
+            </tr>
+            <tr>
+                <td align="right">Pet feeding instructions:</td>
+                <td><input [(ngModel)]="currentpsi.FeedingInstructions" #FeedingInstructions="ngModel"
+                        name="FeedingInstructions" type="FeedingInstructions" class="form-control"
+                        placeholder="FeedingInstructions">
+                </td>
+            </tr>
+            <tr>
+                <td align="right">Daily walks:</td>
+                <td><input [(ngModel)]="currentpsi.DailyWalks" #DailyWalks="ngModel" name="DailyWalks" type="checkbox"
+                        class="form-control" placeholder="DailyWalks">
+                </td>
+            </tr>
+            <tr>
+                <td align="right">Needs basic daily grooming:</td>
+                <td><input [(ngModel)]="currentpsi.DailyGrooming" #DailyGrooming="ngModel" name="DailyGrooming"
+                        type="checkbox" class="form-control" placeholder="DailyGrooming">
+                </td>
+            </tr>
+            <tr>
+                <td align="right">Additional notes for this pet:</td>
+                <td><input [(ngModel)]="currentpsi.AdditionalPetNotes" #AdditionalPetNotes="ngModel"
+                        name="AdditionalPetNotes" type="AdditionalPetNotes" class="form-control"
+                        placeholder="AdditionalPetNotes">
+                </td>
+            </tr>
+        </table>
+        <br />
+        <button id="button" (click)="createPSI()">
+            Save Pet Instruction
+        </button>
+    </div>
+</ng-container>
+
+<div>
+    <table style="width:100%">
+        <tr>
+            <td>
+                <button id="button" (click)="navigateBackward()" *ngIf="selectedPanel !== 1" class="buttonsmall">
+                    <img src="../../assets/arrow_left_48.png" style="width:32px;height:32px" title="Previous" />
+                </button>
+            </td>
+            <td>
+                Step {{selectedPanel}} of {{nrOfPages}}
+            </td>
+            <td *ngIf="selectedPanel !== nrOfPages">
+                <button id="button" (click)="navigateForward()" *ngIf="selectedPanel !== nrOfPages" class="buttonsmall">
+                    <img src="../../assets/arrow_right_48.png" style="width:32px;height:32px" title="Next" />
+                </button>
+            </td>
+        </tr>
+    </table>
+</div>
