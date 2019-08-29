@@ -1,0 +1,54 @@
+<h2>Audit Log</h2>
+
+<div class="data-form">
+    <form (ngSubmit)="f.form.valid && findAuditEntries()" #f="ngForm" action="" method="post">
+        <div class="form-group">
+            Date and Time:&nbsp;
+            <input [(ngModel)]="auditentry.WhenOccured" #WhenOccured="ngModel" name="WhenOccured" type="WhenOccured" class="form-control"
+                placeholder="WhenOccured" required="optional">
+        </div>
+        <div class="form-group">
+            Transaction Type:&nbsp;
+            <input [(ngModel)]="auditentry.TransactionType" #TransactionType="ngModel" name="TransactionType"
+                type="TransactionType" class="form-control" placeholder="TransactionType" required="optional">
+        </div>
+        <!-- <div class="form-group">
+            <button type="submit" style="width:70px; height:60px; border: 1px solid gray">
+                <img src="./assets/create.png" style="width:40px; height:40px" />
+            </button>
+        </div> -->
+        <div>
+                <p class="text-center"><a href="javascript:;" routerLink="/audit-log">Cancel</a></p>
+                <button id="button" (click)="findAuditEntries()" style="width:70px; height:60px; border: 1px solid gray">
+                    Filter
+                    <img src="./assets/search.png" style="width:40px; height:40px" />
+                </button>
+            </div>
+    </form>
+</div>
+
+
+<table id="table">
+    <tr>
+        <th>ID</th>
+        <th>Date &amp; Time</th>
+        <th>Critical Data</th>
+        <th>Transaction Type</th>
+        <th>User ID</th>
+        <th>User Role</th>
+    </tr>
+    <tr *ngFor="let alEntry of auditlogentries">
+        <td style="text-align: center">{{alEntry.AuditID}}</td>
+        <td style="text-align: center">{{alEntry.WhenOccured}}</td>
+        <td style="text-align: center">{{alEntry.CriticalData}}</td>
+        <td style="text-align: center">{{alEntry.TransactionType}}</td>
+        <td style="text-align: center">{{alEntry.UserID}}</td>
+        <td style="text-align: center">{{alEntry.UserRoleID}}</td>
+    </tr>
+</table>
+
+<div>
+    <button id="button" (click)="exportAuditRecords()" style="border: 1px solid gray;">
+        <img src="./assets/verify.png" style="width:30px; height:30px" title="Export..." />
+    </button>
+</div>

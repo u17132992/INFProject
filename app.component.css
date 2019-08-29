@@ -1,0 +1,118 @@
+.h1, .h2, .h3 {
+    /* align-content: center; */
+    text-align: center;
+    font-family:'Segoe UI'
+}
+
+.div {
+    align-content: center;
+    align-self: center;
+}
+
+.bigbutton {
+    background-color: dimgrey;
+    color: white;
+    width: 150px;
+    height: 50px;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    word-wrap: normal;
+    white-space: normal;
+    border-radius: 4px;
+    border: 2px solid darkslategrey;
+    cursor: pointer;
+    box-shadow: 0 10px 14px 0 rgba(0,0,0,0.24),0 15px 48px 0 rgba(0,0,0,0.19);
+}
+.image {
+    margin: 5px;
+    float: right;
+    /* width: 180px; */
+}
+.buttonimage {
+    width: 90%;
+    height: 90%;
+}
+.buttonsmall {
+    display: block;
+    width: 25px;
+    height: 25px;    
+    border: 1px solid rgb(71, 70, 70);
+}
+.buttonbig {
+    display: block;
+    /* vertical-align: auto; */
+    width: 50px;
+    height: 50px;    
+    border: 1px solid rgb(71, 70, 70);
+    /* vertical-align:top; */
+}
+.body {
+    /* float: right; */
+    margin-right: auto;
+    vertical-align: top;
+    display: inline-block;
+    background-color:beige; 
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+.table {
+    /* table-layout:fixed; */
+    margin-right:auto;
+    /* vertical-align: top; */
+    /* border-collapse: collapse; */
+    border-color: transparent;
+    /* float: right; */
+    /* max-width: 800px; */
+    /* min-width: 800px; */
+    display: inline-block;
+    white-space:nowrap;
+}
+.table td, .table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+.table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: darkslategrey;
+    color: white;
+    text-align:center;
+}
+.textbox {
+    border: 2px solid lightgray;
+    border-radius: 4px;
+    width: 100%;
+    padding: 2px 8px;
+    margin: 4px 0;
+    box-sizing: border-box;
+    background-color:lightgray;
+    border-bottom-color:dimgrey;
+}
+.textbox[type=text]:focus {
+    border: 2px solid darkslategrey;
+}
+
+.login-form {
+    width:340px;
+    margin:50px auto;
+}
+
+.login-form form {
+    margin-bottom: 15px;
+    background: #f7f7f7;
+    box-shadow: 0px 2px  2px rgba(0,0,0,0.3);
+    padding: 30px;
+}
+
+.login-form h2 {
+    margin: 0 0 15px;
+}
+.form-control, .btn {
+    min-height: 38px;
+    border-radius: 2px;
+}
+.btn {
+    font-size: 15px;
+    font-weight: bold;
+}

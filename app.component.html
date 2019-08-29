@@ -1,0 +1,123 @@
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap Simple Login Form</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<header>
+  <div style="float: right">
+    <img src="./assets/Picture1.png" id="image" width="200px" />
+  </div>
+  <div style="float:left" style="align-items: center">
+    <h1 class="h1">Petcetera</h1>
+  </div>
+</header>
+
+<body class="body">
+  <div style="align-self: center">
+    <p><b>Welcome to the Petcetera application!</b></p>
+  </div>
+
+  <div style="color:dimgray">
+    <div style="align-self: center" *ngIf="this.isLoggedIn">
+      <p><i>Access:</i> <b> {{this.userRoleTag}}. </b>
+        <i> SU </i>{{currentsystemuser.UserID}}(<b>{{currentsystemuser.EmailAddress}})</b></p>
+    </div>
+    <div style="align-self: center" *ngIf="this.currentpetsitter">
+      <p><i>, PS </i>{{currentPSUser.PetSitterID}}(<b>({{currentPSUser.EmailAddress}})</b></p>
+    </div>
+    <div style="align-self: center" *ngIf="this.currentpetparent">
+      <p><i>, PP </i>{{currentPPUser.PetParentID}}<b>({{currentPPUser.EmailAddress}})</b></p>
+    </div>
+  </div>
+  <div *ngIf="displayLogin" class="login-form" style="align-self: center">
+    <form (ngSubmit)="f.form.valid && signin()" #f="ngForm" action="" method="post">
+      <h3 class="text-center">Login</h3>
+      <div class="form-group">
+        <input [(ngModel)]="currentsystemuser.EmailAddress" #EmailAddress="ngModel" name="EmailAddress"
+          type="EmailAddress" class="form-control" placeholder="EmailAddress" required="required">
+      </div>
+      <div class="form-group">
+        <input [(ngModel)]="currentsystemuser.password" #password="ngModel" name="password" type="password"
+          class="form-control" placeholder="Password" required="required">
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary btn-block">Login</button>
+      </div>
+    </form>
+
+    <div style="align-self: center">
+      <p>Do you need pet sitting facilities?
+        <a href="javascript:;" routerLink="/signupPP">Register as Pet owner</a>
+      </p>
+      <p>Do you want to advertise yourself as a pet sitter?
+        <a href="javascript:;" routerLink="/signupPO">Register as Pet sitter</a>
+      </p>
+    </div>
+  </div>
+
+  <div *ngIf="displayModule" style="align-self: center">
+    <table class="table" style="width: 100%; background-color:darkseagreen">
+      <tr>
+        <td>
+          <div *ngIf="userRoleTag === 'petparent'">
+            <!-- Pet Parent -->
+            <button class="bigbutton btn-info" [routerLink]="['/']">Home</button>
+            <br />
+            <button class="bigbutton btn-info" [routerLink]="['/pet-parent']">Pet-Parents</button>
+            <br />
+            <button class="bigbutton btn-info" [routerLink]="['/pets']">My Pets</button>
+            <br />
+            <button class="bigbutton btn-info" [routerLink]="['/service-request']">Service Requests</button>
+            <br />
+            <button class="bigbutton btn-info" [routerLink]="['/view-applicants']">View Applicants</button>
+            <br />
+          </div>
+          <div *ngIf="userRoleTag === 'petsitter'">
+            <!-- Pet Sitter -->
+            <button class="bigbutton btn-info" [routerLink]="['/']">Home</button>
+            <br />
+            <button class="bigbutton btn-info" [routerLink]="['/pet-sitter']">Pet-Sitters</button>
+            <br />
+            <button class="bigbutton btn-info" [routerLink]="['/ps-opportunities']">Opportunities</button>
+            <br />
+
+          </div>
+          <div *ngIf="userRoleTag === 'admin'">
+            <!-- Admin -->
+            <button class="bigbutton btn-info" [routerLink]="['/']">Home</button>
+            <br />
+            <button class="bigbutton btn-info" [routerLink]="['/pet-parent']">View Pet-Parents</button>
+            <br />
+            <button class="bigbutton btn-info" [routerLink]="['/pet-sitter']">View Pet-Sitters</button>
+            <br />
+            <button class="bigbutton btn-info" [routerLink]="['/search-service-request']">View Service Requests</button>
+            <br />
+            <button class="bigbutton btn-info" [routerLink]="['/audit-log']">Audit Log</button>
+            <br />
+            <button class="bigbutton btn-info" [routerLink]="['/verify-student-references']">Verify References</button>
+            <br />
+            <button class="bigbutton btn-info" [routerLink]="['/pet-sitter-criteria']">Pet Sitter Criteria</button>
+            <br />
+          </div>
+          <div style="background-color: bisque" *ngIf="userRoleTag === 'admin'">
+            <button class="bigbutton btn-info" [routerLink]="['/suburbs']">Suburbs</button>
+            <br />
+            <button class="bigbutton btn-info" [routerLink]="['/pet-types']">Maintain Pet Types</button>
+            <br />
+            <button class="bigbutton btn-info" [routerLink]="['/titles']">Maintain Titles</button>
+          </div>
+        </td>
+        <td>
+          <div>
+            <router-outlet></router-outlet>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+</body>
