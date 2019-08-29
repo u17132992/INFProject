@@ -1,0 +1,17 @@
+{
+  "petceteradb": {
+    "host": "127.0.0.1",
+    "port": 1433,
+    "database": "INF370test1",
+    "username": "petcetera",
+    "password": "Petcetera",
+    "name": "petceteradb",
+    "connector": "mssql",
+    "debug": true,
+    "normalizeUndefinedInQuery": "ignore"
+  },
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "name": "Company",
+  "options": {
+    "idInjection": false,
+    "mssql": {
+      "schema": "dbo",
+      "table": "Company"
+    }
+  },
+  "properties": {
+    "CompanyID": {
+      "type": "Number",
+      "id": 1,
+      "required": true,
+      "length": null,
+      "precision": 10,
+      "scale": 0,
+      "mssql": {
+        "columnName": "CompanyID",
+        "dataType": "int",
+        "dataLength": null,
+        "dataPrecision": 10,
+        "dataScale": 0,
+        "nullable": "NO"
+      }
+    },
+    "CompanyName": {
+      "type": "String",
+      "required": true,
+      "length": 100,
+      "precision": null,
+      "scale": null,
+      "mssql": {
+        "columnName": "CompanyName",
+        "dataType": "varchar",
+        "dataLength": 100,
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "NO"
+      }
+    },
+    "CompanyAddress": {
+      "type": "String",
+      "required": true,
+      "length": -1,
+      "precision": null,
+      "scale": null,
+      "mssql": {
+        "columnName": "CompanyAddress",
+        "dataType": "varchar",
+        "dataLength": -1,
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "NO"
+      }
+    },
+    "RegistrationNumber": {
+      "type": "String",
+      "required": true,
+      "length": 10,
+      "precision": null,
+      "scale": null,
+      "mssql": {
+        "columnName": "RegistrationNumber",
+        "dataType": "varchar",
+        "dataLength": 10,
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "NO"
+      }
+    },
+    "ContactDetails": {
+      "type": "String",
+      "required": true,
+      "length": -1,
+      "precision": null,
+      "scale": null,
+      "mssql": {
+        "columnName": "ContactDetails",
+        "dataType": "varchar",
+        "dataLength": -1,
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "NO"
+      }
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

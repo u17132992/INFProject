@@ -1,0 +1,202 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../common/mixins",
+      "./mixins"
+    ]
+  },
+  "User": {
+    "dataSource": "db"
+  },
+  "AccessToken": {
+    "dataSource": "db",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "db",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "db",
+    "public": false,
+    "options": {
+      "strictObjectIDCoercion": true
+    }
+  },
+  "Role": {
+    "dataSource": "db",
+    "public": false
+  },
+  "PetParent": {
+    "dataSource": "petceteradb",
+    "public": true
+  },
+  "PetSitter": {
+    "dataSource": "petceteradb",
+    "public": true
+  },
+  "Approve": {
+    "dataSource": "petceteradb",
+    "public": true
+  },
+  "AuditLog": {
+    "dataSource": "petceteradb",
+    "public": true
+  },
+  "SystemUser": {
+    "dataSource": "petceteradb",
+    "public": true
+  },
+  "UserRole": {
+    "dataSource": "petceteradb",
+    "public": true
+  },
+  "ServiceRequest": {
+    "dataSource": "petceteradb",
+    "public": true
+  },
+  "City": {
+    "dataSource": "petceteradb",
+    "public": true
+  },
+  "Suburb": {
+    "dataSource": "petceteradb",
+    "public": true
+  },
+  "MeetingStatus": {
+    "dataSource": "petceteradb",
+    "public": true
+  },
+  "PaymentStatus": {
+    "dataSource": "petceteradb",
+    "public": true
+  },
+  "Pet": {
+    "dataSource": "petceteradb",
+    "public": true
+  },
+  "PetBreed": {
+    "dataSource": "petceteradb",
+    "public": true
+  },
+  "PetServiceInstruction": {
+    "dataSource": "petceteradb",
+    "public": true
+  },
+  "PetSitterStatus": {
+    "dataSource": "petceteradb",
+    "public": true
+  },
+  "PetType": {
+    "dataSource": "petceteradb",
+    "public": true
+  },
+  "PetUpdate": {
+    "dataSource": "petceteradb",
+    "public": true
+  },
+  "PotentialSitter": {
+    "dataSource": "petceteradb",
+    "public": true
+  },
+  "Province": {
+    "dataSource": "petceteradb",
+    "public": true
+  },
+  "Rating": {
+    "dataSource": "petceteradb",
+    "public": true
+  },
+  "ServicePet": {
+    "dataSource": "petceteradb",
+    "public": true
+  },
+  "ServicePrice": {
+    "dataSource": "petceteradb",
+    "public": true
+  },
+  "ServiceType": {
+    "dataSource": "petceteradb",
+    "public": true
+  },
+  "SitterComplaint": {
+    "dataSource": "petceteradb",
+    "public": true
+  },
+  "SitterReference": {
+    "dataSource": "petceteradb",
+    "public": true
+  },
+  "Student": {
+    "dataSource": "petceteradb",
+    "public": true
+  },
+  "Subsystem": {
+    "dataSource": "petceteradb",
+    "public": true
+  },
+  "TertiaryEducation": {
+    "dataSource": "petceteradb",
+    "public": true
+  },
+  "Test": {
+    "dataSource": "petceteradb",
+    "public": true
+  },
+  "Title": {
+    "dataSource": "petceteradb",
+    "public": true
+  },
+  "Company": {
+    "dataSource": "petceteradb",
+    "public": true
+  },
+  "ContactNo": {
+    "dataSource": "petceteradb",
+    "public": true
+  },
+  "CriteriaRating": {
+    "dataSource": "petceteradb",
+    "public": true
+  },
+  "DiscoveryType": {
+    "dataSource": "petceteradb",
+    "public": true
+  },
+  "DocumentType": {
+    "dataSource": "petceteradb",
+    "public": true
+  },
+  "Document": {
+    "dataSource": "petceteradb",
+    "public": true
+  },
+  "FuelSpend": {
+    "dataSource": "petceteradb",
+    "public": true
+  },
+  "Functionality": {
+    "dataSource": "petceteradb",
+    "public": true
+  },
+  "Instruction": {
+    "dataSource": "petceteradb",
+    "public": true
+  },
+  "Meeting": {
+    "dataSource": "petceteradb",
+    "public": true
+  },
+  "MeetingResponse": {
+    "dataSource": "petceteradb",
+    "public": true
+  }
+}
