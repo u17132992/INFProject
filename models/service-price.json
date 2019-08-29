@@ -1,0 +1,14 @@
+{
+  "name": "ServicePrice",
+  "plural": "ServicePrices",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {},
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
