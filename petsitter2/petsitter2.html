@@ -1,0 +1,94 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title> Details</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="masters">
+  <ion-card class="card">
+  <p>Please select the View button if you wish to view your saved Details</p>
+   <form [formGroup]="petsitterForm"(ngSubmit)="onFormSubmit(petsitterForm.value)">  
+     <table class="table" >   
+                <tr *ngFor="let petsitter of allPetSitters | async">  
+                    <td class="tbl2">{{petsitter.PetSitterName}}</td>  
+         
+                    <td class="tbl2">  
+                        <button type="button" class="btn btn-info"matTooltip="Click Edit Button"(click)="loadPetSitterToEdit(petsitter.PetSitterID)"
+            mat-raised-button color="accent">View</button>  
+                      </td>   
+                  </tr>  
+       </table>
+                        <input formControlName="PetSitterName" matTooltip="Enter PetSitter
+      Name" matInput placeholder="Saved Name">  
+     
+                      <mat-error>  
+                          <span
+         *ngIf="!petsitterForm.get('PetSitterName').value && petsitterForm.get('PetSitterName').touched"></span>  
+                        </mat-error>  
+                    
+
+                        <input formControlName="PetSitterSurname" matTooltip="Enter PetSitter
+      surname" matInput placeholder="Saved Surname">  
+
+                      <mat-error>  
+                          <span 
+        *ngIf="!petsitterForm.get('PetSitterSurname').value && petsitterForm.get('PetSitterSurname').touched"></span>  
+                        </mat-error>  
+                   
+
+                        <input formControlName="PetSitterEmailAddress" matTooltip="Enter PetSitter Email
+      Address" matInput placeholder="Saved Email Address">  
+     
+                      <mat-error>  
+                          <span *ngIf="!petsitterForm.get('PetSitterEmailAddress').value && petsitterForm.get('PetSitterEmailAddress').touched"></span>  
+                        </mat-error>  
+                    
+
+                        <input formControlName="PetSitterPhoneNum" matTooltip="Enter cellphone
+      number" matInput placeholder="Saved Contact number">  
+     
+                      <mat-error>  
+                          <span
+         *ngIf="!petsitterForm.get('PetSitterPhoneNum').value && petsitterForm.get('PetSitterPhoneNum').touched"></span>  
+                        </mat-error>  
+                    
+
+                        <input formControlName="PetSitterAddress" matTooltip="Enter
+      address" matInput placeholder="Saved Physical Address">  
+
+                      <mat-error>  
+                          <span 
+        *ngIf="!petsitterForm.get('PetSitterAddress').value && petsitterForm.get('PetSitterAddress').touched"></span>  
+                        </mat-error>  
+            
+
+     
+                        <input formControlName="About" matTooltip="Enter about" matInput placeholder="Saved About">  
+     
+                      <mat-error>  
+                          <span 
+        *ngIf="!petsitterForm.get('About').value && petsitterForm.get('About').touched"></span>  
+                        </mat-error>  
+
+
+     
+                        <input formControlName="Area" matTooltip="Enter Area" matInput placeholder="Area">  
+
+                      <mat-error>  
+                          <span  *ngIf="!petsitterForm.get('Area').value && petsitterForm.get('Area').touched"></span>  
+                        </mat-error>  
+                       
+    <p *ngIf="dataSaved" style="color:rgb(0, 128, 0);font-size:20px;font-weight:bold" Class="success" align="left">  
+                          {{massage}}  
+                        </p>  
+                    
+                      <button type="submit" mat-raised-button color="accent"matTooltip="Click Submit Button"[disabled]="!petsitterForm.valid">Submit</button>  
+                      <button type="reset" mat-raised-button color="accent"matTooltip="Click Reset Button" (click)="resetForm()">Reset</button>  
+                     
+                      
+        </form>  
+    </ion-card>
+    </ion-content>  

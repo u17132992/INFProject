@@ -1,0 +1,69 @@
+<ion-header>
+    <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title> Pet Sitting Updates </ion-title>
+    </ion-navbar>
+  </ion-header>
+
+  <ion-content padding class="masters">
+    <ion-card class="card">
+      <p>Please select the Update button to update the relevant pet</p>
+       <form [formGroup]="petupdateForm"(ngSubmit)="onFormSubmit(petupdateForm.value)">  
+           <table class="table" >   
+                        <tr *ngFor="let petupdate of allPetUpdates | async">  
+                          <td class="tbl2">{{petupdate.NameDescription}}</td>  
+                          <td class="tbl2">  
+                            <button type="button" class="btn btn-info"matTooltip="Click Edit Button"(click)="loadPetUpdateToEdit(petupdate.PetUpdateID)" mat-raised-button color="accent">Update</button>  
+                          </td>   
+                        </tr>    
+      </table>  
+
+ <input formControlName="UpdateDate" matTooltip="" matInput placeholder="Date to be completed" disabled>  
+               
+ <mat-error>  
+ <span  *ngIf="!petupdateForm.get('UpdateDate').value && petupdateForm.get('UpdateDate').touched"></span>  
+</mat-error>  
+
+<input formControlName="NameDescription" matTooltip="" matInput placeholder="Pet Name" disabled>  
+
+<mat-error>  
+ <span  *ngIf="!petupdateForm.get('NameDescription').value && petupdateForm.get('NameDescription').touched"></span>  
+</mat-error>  
+                   
+ <input formControlName="FeedingStatus" matTooltip="" matInput placeholder="Please enter status">  
+
+ <mat-error>  
+ <span *ngIf="!petupdateForm.get('FeedingStatus').value && petupdateForm.get('FeedingStatus').touched"></span>  
+ </mat-error>  
+
+ <input formControlName="WalkingStatus" matTooltip="" matInput placeholder="Please enter status">  
+     
+ <mat-error>  
+  <span  *ngIf="!petupdateForm.get('WalkingStatus').value && petupdateForm.get('WalkingStatus').touched"></span>  
+</mat-error>  
+                      
+<input formControlName="GroomedStatus" matTooltip="" matInput placeholder="Please enter status">  
+
+ <mat-error>  
+ <span  *ngIf="!petupdateForm.get('GroomedStatus').value && petupdateForm.get('GroomedStatus').touched"></span>  
+</mat-error>  
+                  
+<p>  
+  {{massage}}  
+</p>  
+                    
+<button type="submit" mat-raised-button color="accent"matTooltip="Click Submit Button"[disabled]="!petupdateForm.valid">Submit</button>  
+<br><br>
+<button type="reset" mat-raised-button color="accent"matTooltip="Click Reset Button" (click)="resetForm()">Reset</button>  
+<br>
+<button ion-button (click)="takePhoto1()">Take Photo of Jack</button>
+<br>
+<button ion-button (click)="takePhoto2()">Take Photo of Jane</button>
+                      
+</form>  
+    
+  </ion-card> 
+  </ion-content> 
+    
