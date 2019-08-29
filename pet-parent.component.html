@@ -1,0 +1,110 @@
+<h2>Pet Parents</h2>
+
+<div class="data-form">
+    <!-- <ng-container> -->
+        <p>{{user</p>
+    <form (ngSubmit)="f.form.valid && createPetParent()" #f="ngForm" action="" method="post">
+        <div class="form-group">
+            <table>
+                <tr>
+                    <td>ID:</td>
+                    <td><input ngModel="petparent.PetParentID" #PetParentId="ngModel" name="PetParentID"
+                        type="PetParentID" class="form-control" placeholder="PetParentID" required="required"></td>
+                    <td>Title:</td>
+                    <td><select ngModel="petparent.TitleID" #TitleID="ngModel" name="TitleID" type="select"
+                            class="form-control" required="required">
+                            <option placeholder="Title" *ngFor="let t of titles" value="t.TitleID">
+                                {{t.TitleDescription}}
+                            </option>
+                        </select></td>
+                </tr>
+                <tr>
+                    <td>Name:</td>
+                    <td><input ngModel="petparent.Name" #Name="ngModel" name="Name" type="Name" class="form-control"
+                            placeholder="Name" required="required"></td>
+                    <td>Surname:</td>
+                    <td><input ngModel="petparent.Surname" #Surname="ngModel" name="Surname" type="Surname"
+                            class="form-control" placeholder="Surname" required="required"></td>
+                </tr>
+                <tr>
+                    <td>E-mail address:</td>
+                    <td><input ngModel="petparent.EmailAddress" #EmailAddress="ngModel" name="EmailAddress"
+                            type="EmailAddress" class="form-control" placeholder="EmailAddress" required="required"></td>
+                    <td>Phone number:</td>
+                    <td><input ngModel="petparent.PhoneNr" #PhoneNr="ngModel" name="PhoneNr" type="PhoneNr"
+                            class="form-control" placeholder="PhoneNr" required="required"></td>
+                </tr>
+                <tr>
+                    <td>Address:</td>
+                    <td><input ngModel="petparent.SitterAddress" #SitterAddress="ngModel" name="SitterAddress"
+                            type="SitterAddress" class="form-control" placeholder="SitterAddress" required="required">
+                    </td>
+                    <td>Suburb:</td>
+                    <td><select ngModel="petparent.SuburbID" #Suburb="ngModel" name="SuburbID" type="select"
+                            class="form-control" required="required">
+                            <option placeholder="Suburb" *ngFor="let s of suburbs" value="s.value">
+                                {{suburbs.viewValue}}
+                            </option>
+                        </select></td>
+                </tr>
+                <tr>
+                    <td>Pets:</td>
+                    <td colspan="3"><input ngModel="petparent.Age" #Age="ngModel" name="Age" type="Age"
+                            class="form-control" placeholder="Age" required="required"></td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</div>
+
+<div>
+    <p class="text-center"><a href="javascript:;" routerLink="/pet-parent">Cancel</a></p>
+    <button id="button" (click)="findPetParents()" class="buttonbig">
+        <img class="buttonimage" src="../../assets/search_48.png" />
+    </button>
+    &nbsp;
+    <button id="button" (click)="createPetParent()" class="buttonbig">
+        <img class="buttonimage" src="../../assets/add_48.png" title="Add" />
+    </button>
+    &nbsp;
+    <button id="button" (click)="updatePetParent(petparent)" class="buttonbig">
+        <img src="../../assets/pencil_48.png" class="buttonimage" title="Submit" />
+    </button>
+</div>
+
+<table id="petparentlist">
+    <!-- *ngIf="userRole2===2" -->
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Email Adress</th>
+        <th>Phone Number</th>
+        <th>Adress</th>
+        <th>Suburb</th>
+        <th>City</th>
+        <th>Province</th>
+        <th>Pets</th>
+        <th>&nbsp;</th>
+    </tr>
+    <tr *ngFor="let petparent of petparents">
+        <td style="text-align: center">{{petparent.PetParentID}}</td>
+        <td style="text-align: center">{{petparent.Name}}</td>
+        <td style="text-align: center">{{petparent.Surname}}</td>
+        <td style="text-align: center">{{petparent.EmailAddress}}</td>
+        <td style="text-align: center">{{petparent.PhoneNr}}</td>
+        <td style="text-align: center">{{petparent.ParentAddress}}</td>
+        <td style="text-align: center">Suburb</td>
+        <td style="text-align: center">City</td>
+        <td style="text-align: center">Province</td>
+        <td style="text-align: center">{{petparent.Pets}}</td>
+        <td>
+            <button id="button" (click)="selectPetParent(petparent.PetParentID)" class="buttonsmall">
+                <img src="../../assets/accepted_48.png" class="buttonimage" title="Select for editing" />
+            </button>
+            <button id="button" (click)="deletePetParent(petparent.PetParentID)" class="buttonsmall">
+                <img src="../../assets/cancel_48.png" class="buttonimage" title="Delete" />
+            </button>
+        </td>
+    </tr>
+</table>
