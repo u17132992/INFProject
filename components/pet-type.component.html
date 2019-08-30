@@ -1,0 +1,50 @@
+<div class="container">
+    <h2>Pet Types</h2>
+    <hr>
+    <!-- <div id="PetTypeID" class="form-group row">
+            <label for="PetTypeID" class="col-sm-2 col-form-label">
+                PetType ID
+            </label>
+            <div class="col-sm-10">
+                <input [(ngModel)]="currentpettype.PetTypeID" id="PetTypeID" name="PetTypeID" class="form-control"
+                    placeholder="PetTypeID">
+            </div>
+        </div> -->
+    <div id="PetTypeDescription" class="form-group row">
+        <label for="PetTypeDescription" class="col-sm-2 col-form-label">
+            Pet Type:
+        </label>
+        <div class="col-sm-10">
+            <input [(ngModel)]="currentpettype.PetTypeDescription" id="PetTypeDescription" name="PetTypeDescription"
+                class="form-control" placeholder="PetTypeDescription" maxlength="25">
+        </div>
+    </div>
+    <div class="form-group row">
+        <button id="button" (click)="createPetType()">
+            <img class="buttonimage" src="../../assets/add_48.png" title="Add" />
+        </button>
+        <button id="button" (click)="updatePetType()">
+            <img src="../../assets/pencil_48.png" class="buttonimage" title="Update" />
+        </button>
+    </div>
+</div>
+
+<table id="table">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>&nbsp;</th>
+    </tr>
+    <tr *ngFor="let r of pettypes">
+        <td style="text-align: center">{{r.PetTypeID}}</td>
+        <td style="text-align: center">{{r.PetTypeDescription}}</td>
+        <td>
+            <button id="button" (click)="selectPetType(r.PetTypeID)">
+                <img class="buttonimage" src="../../assets/accepted_48.png" title="Select" />
+            </button>
+            <button id="button" (click)="deletePetType(r.PetTypeID)">
+                <img src="../../assets/cancel_48.png" class="buttonimage" title="Delete" />
+            </button>
+        </td>
+    </tr>
+</table>

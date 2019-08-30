@@ -1,0 +1,133 @@
+<ng-container *ngIf="selectedPanel === 1">
+    <h3>Available Opportunities</h3>
+
+  ests) -->
+    <table id="tablepsopportunities">
+     
+        <tr>
+            <th style="width:50%">Where</th>
+            <th>What</th>
+            <th>When</th>
+            <th>&nbsp;</th>
+        </tr>
+        <tr *ngFor="let opp of psopportunities">
+            <td>
+                <ng-container *ngFor="let c of cities">
+                    <div *ngIf="c.CityID === opp.CityID">{{ c.CityName }}</div>
+                </ng-container>
+                <ng-container *ngFor="let s of suburbs">
+                    <div *ngIf="s.SuburbID === opp.SuburbID">{{ s.SuburbName }}</div>
+                </ng-container>
+            </td>
+            <td>
+                <ng-container *ngFor="let t of stypes">
+                    <div *ngIf="t.TypeID === opp.TypeID">{{t.ServiceTypeDescription}}</div>
+                </ng-container>
+            </td>
+            <td>
+                {{opp.DateStart.substring(0,10)}}
+                &nbsp;to&nbsp;
+                {{opp.DateEnd.substring(0,10)}}
+            </td>
+            <td>
+                <button id="button" (click)="selectOpportunity(opp.RequestID)">
+                    <img src="../../assets/search_48.png" style="width:32px;height:32px" title="View" />
+                </button>
+            </td>
+        </tr>
+    </table>
+</ng-container>
+
+<ng-container *ngIf="selectedPanel === 2">
+    <h3>Opportunity Details</h3>
+
+    <div class="form-group" *ngIf="selectedopp">
+
+        <table id="psopportunity-detail">
+            <tr>
+                <td align="right">Service Type:</td>
+                <td>
+                    <ng-container *ngFor="let r of stypes">
+                        <div *ngIf="r.TypeID === selectedopp.TypeID">{{ r.ServiceTypeDescription }}</div>
+                    </ng-container>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">Start Date:</td>
+                <td>{{ selectedopp.DateStart.substring(0,10) }} </td>
+            <tr>
+                <td align="right">End Date:</td>
+                <td>{{ selectedopp.DateEnd.substring(0,10) }} </td>
+            </tr>
+            <tr>
+                <td>Area Situated:</td>
+                <td>
+                    <ng-container *ngFor="let c of cities">
+                        <div *ngIf="c.CityID === selectedopp.CityID">{{ c.CityName }}</div>
+                    </ng-container>
+                    &nbsp;
+                    <ng-container *ngFor="let s of suburbs">
+                        <div *ngIf="s.SuburbID === selectedopp.SuburbID">{{ s.SuburbName }}</div>
+                    </ng-container>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <br />
+    <div>
+        <h4>Pets to be looked after:</h4>
+        <div *ngFor="let psi of petserviceinstructions">
+            <table>
+                <tr>
+                    <td align="right">Pet</td>
+                    <td>{{psi.NameDescription}}</td>
+                </tr>
+                <tr>
+                    <td align="right">Feeding Notes:</td>
+                    <td>{{psi.FeedingInstructions}}</td>
+                </tr>
+                <tr>
+                    <td align="right">Daily walks:</td>
+                    <td>{{psi.DailyWalks}}</td>
+                </tr>
+                <tr>
+                    <td align="right">Daily grooming:</td>
+                    <td>{{psi.DailyGrooming}}</td>
+                </tr>
+                <tr>
+                    <td align="right">Additional Notes:</td>
+                    <td>{{psi.AdditionalPetNotes}}</td>
+                </tr>
+                <tr>
+                        <td align="right">&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>                
+            </table>
+        </div>
+    </div>
+    <br />
+    <button id="button" (click)="applyForOpportunity(selectedopp.RequestID)">
+     Applpy for this Opportunity
+    </button>
+
+</ng-container>
+
+<div>
+    <table style="width:100%">
+        <tr>
+            <td>
+                <button id="button" (click)="navigateBackward()" *ngIf="selectedPanel !== 1" class="buttonsmall">
+                    <img src="../../assets/arrow_left_48.png" style="width:32px;height:32px" title="Previous" />
+                </button>
+            </td>
+            <td *ngIf="selectedPanel !== NoOfPanels">
+                Step {{selectedPanel}} of {{NoOfPanels}}
+            </td>
+            <td>
+                <button id="button" (click)="navigateForward()" *ngIf="selectedPanel !== nrOfPages" class="buttonsmall">
+                    <img src="../../assets/arrow_right_48.png" style="width:32px;height:32px" title="Next" />
+                </button>
+            </td>
+        </tr>
+    </table>
+</div>

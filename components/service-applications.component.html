@@ -1,0 +1,134 @@
+<h3>View Pet sitter Applicants</h3>
+
+<ng-container *ngIf="selectedPanel === 1">
+    <h3>My Service Request: {{ currentservicerequest.RequestID}} </h3>
+
+    <table id="tableapplicants">
+        <tr>
+            <th colspan="5"><b>My service Applicants</b></th>
+        </tr>
+        <tr>
+            <th>Request ID</th>
+
+            <th>Sitter Name</th>
+            <th>Sitter Area</th>
+            <th>&nbsp;</th>
+        </tr>
+        <tr *ngFor="let pot of potsitters">
+            <td> {{pot.RequestID}} </td>
+
+            <td> {{pot.SitterName}}&nbsp;{{pot.SitterSurname}} </td>
+            <td> {{pot.SitterCity}} </td>
+            <td>
+                <button id="button" (click)="viewApplicant(r.SitterID)" class="buttonsmall">
+                    <img src="../../assets/search_48.png" style="width:32px;height:32px" title="View" />
+                </button>
+        </tr>
+    </table>
+    <br />
+</ng-container>
+
+
+<ng-container *ngIf="selectedPanel === 2">
+    <h3>Applicant Details</h3>
+
+    <div class="form-group" *ngIf="selectedappl">
+
+        <table id="appl-detail">
+            <tr>
+                <td align="right">Name:</td>
+                <td>{{ currentsitter.SitterName }}&nbsp;{{currentsitter.SitterSurname}}</td>
+            </tr>
+            <tr>
+                <td align="right">About:</td>
+                <td>{{ currentsitter.About }} </td>
+            </tr>
+            <tr>
+                <td align="right">Area based:</td>
+                <td>{{ currentsitter.City }} </td>
+            </tr>
+            <tr>
+                <td align="right">Reference:</td>
+                <td>{{ currentsitter.Reference }} </td>
+            </tr>
+        </table>
+    </div>
+    <br />
+    <br />
+    <button id="button" (click)="scheduleMeeting()">
+        Schedule Meeting
+    </button>
+    &nbsp; <button id="button" (click)="Back()">
+        Back
+    </button>
+</ng-container>
+
+<ng-container *ngIf="selectedPanel === 3">
+
+    <h2>Schedule meeting times:</h2>
+    <div id="one">
+        <table>
+            <tr>
+                <td align="right">Meeting Date 1:</td>
+                <td align="left"><input [(ngModel)]="currentmeeting.MeetingDate1" type="date" id="mDate1" name="mDate1">
+                </td>
+            </tr>
+            <tr>
+                <td align="right">Meeting Time 1:</td>
+                <td align="left"><input [(ngModel)]="currentmeeting.MeetingTime1" type="time" name="usr_time1"></td>
+            </tr>
+
+            <tr>
+                <td align="right">Meeting Date 2:</td>
+                <td align="left"><input [(ngModel)]="currentmeeting.MeetingDate2" type="date" id="mDate2" name="mDate2">
+                </td>
+            </tr>
+            <tr>
+                <td align="right">Meeting Time 2:</td>
+                <td align="left"><input [(ngModel)]="currentmeeting.MeetingTime2" type="time" name="usr_time2"></td>
+            </tr>
+            <tr>
+                <td align="right">Meeting Date 3:</td>
+                <td align="left"><input [(ngModel)]="currentmeeting.MeetingDate3" type="date" id="mDate3" name="mDate3">
+                </td>
+            </tr>
+            <tr>
+                <td align="right">Meeting Time 3:</td>
+                <td align="left"><input [(ngModel)]="currentmeeting.MeetingTime3" type="time" name="usr_time3"></td>
+            </tr>
+            <tr>
+                <td align="right">Meeting Location:</td>
+                <td align="left"><input [(ngModel)]="currentmeeting.MeetingTime3" type="time" name="usr_time3"></td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td align="left">
+                    <button id="button" (click)="setupMeetings()">
+                        Save Meetings
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</ng-container>
+
+<div>
+    <table style="width:100%">
+        <tr>
+            <td>
+                <button id="button" (click)="navigateBackward()" *ngIf="selectedPanel !== 1" class="buttonsmall">
+                    <img src="../../assets/arrow_left_48.png" style="width:32px;height:32px" title="Previous" />
+                </button>
+            </td>
+            <td>
+                Step {{selectedPanel}} of {{nrOfPages}}
+            </td>
+            <td *ngIf="selectedPanel !== nrOfPages">
+                <button id="button" (click)="navigateForward()" *ngIf="selectedPanel !== nrOfPages" class="buttonsmall">
+                    <img src="../../assets/arrow_right_48.png" style="width:32px;height:32px" title="Next" />
+                </button>
+            </td>
+        </tr>
+    </table>
+</div>
